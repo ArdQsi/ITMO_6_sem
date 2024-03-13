@@ -45,4 +45,55 @@ public class TreeTest {
         tree.insertNode(4);
         assertEquals(4, tree.size());
     }
+
+    @Test
+    public void testLeftChild() {
+        Node nodeRoot;
+        Node node;
+        Tree tree = new Tree();
+        tree.insertNode(4);
+        tree.insertNode(3);
+        tree.insertNode(5);
+        nodeRoot = tree.findNodeByValue(4);
+        node = tree.findNodeByValue(3);
+
+        assertEquals(node.getValue(), nodeRoot.getLeftChild().getValue());
+        assertEquals(null, node.getLeftChild());
+        assertEquals(null, node.getRightChild());
+    }
+
+    @Test
+    public void testRightChild() {
+        Node nodeRoot;
+        Node node;
+        Tree tree = new Tree();
+        tree.insertNode(4);
+        tree.insertNode(3);
+        tree.insertNode(5);
+        nodeRoot = tree.findNodeByValue(4);
+        node = tree.findNodeByValue(5);
+
+        assertEquals(node.getValue(), nodeRoot.getRightChild().getValue());
+        assertEquals(null, node.getLeftChild());
+        assertEquals(null, node.getRightChild());
+    }
+
+    @Test
+    public void testRoot() {
+        Node nodeRoot;
+        Node nodeLeft;
+        Node nodeRight;
+        Tree tree = new Tree();
+        tree.insertNode(4);
+        tree.insertNode(3);
+        tree.insertNode(5);
+        nodeRoot = tree.findNodeByValue(4);
+        nodeLeft = nodeRoot.getLeftChild();
+        nodeRight = nodeRoot.getRightChild();
+
+        assertEquals(4, nodeRoot.getValue());
+        assertEquals(nodeLeft, nodeRoot.getLeftChild());
+        assertEquals(nodeRight, nodeRoot.getRightChild());
+    }
+
 }
